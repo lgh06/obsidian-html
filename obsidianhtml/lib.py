@@ -9,7 +9,7 @@ from string import ascii_letters, digits
 import tempfile             # used to create temporary files/folders
 from distutils.dir_util import copy_tree
 import time
-from functools import cache
+from functools import lru_cache
 
 # Open source files in the package
 import importlib.resources as pkg_resources
@@ -95,21 +95,21 @@ def ConvertTitleToMarkdownId(title):
     idstr = "".join([ch for ch in idstr if ch in (ascii_letters + digits + ' -_')])
     return idstr
 
-@cache
+@lru_cache
 def OpenIncludedFile(resource):
     path = importlib.util.find_spec("obsidianhtml.src").submodule_search_locations[0]
     path = os.path.join(path, resource)
     with open(path, 'r', encoding="utf-8") as f:
         return f.read()
 
-@cache
+@lru_cache
 def OpenIncludedFileBinary(resource):
     path = importlib.util.find_spec("obsidianhtml.src").submodule_search_locations[0]
     path = os.path.join(path, resource)
     with open(path, 'rb') as f:
         return f.read()    
 
-@cache
+@lru_cache
 def CreateStaticFilesFolders(html_output_folder):
     obsfolder = html_output_folder.joinpath('obs.html')
     os.makedirs(obsfolder, exist_ok=True)
