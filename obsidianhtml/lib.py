@@ -97,14 +97,14 @@ def ConvertTitleToMarkdownId(title):
 
 @lru_cache(maxsize=None)
 def OpenIncludedFile(resource):
-    path = importlib.util.find_spec("obsidianhtml.src").submodule_search_locations[0]
+    path = list(importlib.util.find_spec("obsidianhtml.src").submodule_search_locations)[0]
     path = os.path.join(path, resource)
     with open(path, 'r', encoding="utf-8") as f:
         return f.read()
 
 @lru_cache(maxsize=None)
 def OpenIncludedFileBinary(resource):
-    path = importlib.util.find_spec("obsidianhtml.src").submodule_search_locations[0]
+    path = list(importlib.util.find_spec("obsidianhtml.src").submodule_search_locations)[0]
     path = os.path.join(path, resource)
     with open(path, 'rb') as f:
         return f.read()    
