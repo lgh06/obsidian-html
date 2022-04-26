@@ -1,4 +1,4 @@
-from pathlib import Path
+from pathlib import Path, PurePath
 import yaml
 from .lib import PopulateTemplate, OpenIncludedFile
 
@@ -51,7 +51,7 @@ class CreateIndexFromDirStructure():
             _continue = False
             for folder in self.exclude_subfolders:
                 excl_folder_path = self.root.joinpath(folder)
-                if path.resolve().is_relative_to(excl_folder_path):
+                if PurePath(path.resolve()).is_relative_to(excl_folder_path):
                     if verbose:
                         print(f'\tExcluded folder {excl_folder_path}: Excluded file {path.name}.')
                     _continue = True
