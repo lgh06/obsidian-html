@@ -1,3 +1,6 @@
+# It's a fork version, works on python 3.7, for cloudflare pages.  
+
+
 # Obsidian-html [![TestSuite](https://github.com/obsidian-html/obsidian-html/actions/workflows/test.yml/badge.svg)](https://github.com/obsidian-html/obsidian-html/actions/workflows/test.yml)
 
 ## Description
