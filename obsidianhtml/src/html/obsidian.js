@@ -16,24 +16,17 @@ function LoadPage() {
         if (documentation_mode){
                 httpGetAsync(html_url_prefix+'/obs.html/data/graph.json', load_dirtree_as_left_pane, 0, 'callbackpath');
         }
-        
-        let collection = document.getElementsByClassName("toc");
-        if (collection.length > 0){
-                let toc = collection[0];
-                if (toc.getElementsByTagName('li').length > 1){
-
-                        if (toc_pane && no_tab_mode){
-                                let tpd = document.getElementById(toc_pane_div);
-                                tpd.display = 'block';
-                                tpd.innerHTML = '<span class="toc-header">Table of contents</span>' + collection[0].innerHTML;
-                        }
-                        else{
-                                toc.style.display = 'block';
-                                toc.innerHTML = '<h3>Table of Contents</h1>\n'+toc.innerHTML
-                        }
+        if (toc_pane && no_tab_mode){
+                let collection = document.getElementsByClassName("toc");
+                if (collection.length > 0){
+                        let toc = collection[0];
+                        toc.style.display = 'none';
+                        let tpd = document.getElementById(toc_pane_div);
+                        tpd.display = 'block';
+                        tpd.innerHTML = '<span class="toc-header">Table of contents</span>' + collection[0].innerHTML;
                 }
         }
-        
+
         if (tab_mode){
                 SetLinks(0);
         }
@@ -329,11 +322,8 @@ function SetLinks(level) {
                         }
                         if (tab_mode && l.classList.contains('anchor-link')) {
                                 l.onclick = function () {
+                                        console.log('anch')
                                         levelcont = this.closest('div')
-                                        if (levelcont.classList.contains('container') == false){
-                                                levelcont = levelcont.parentElement;
-                                        }
-                                        
                                         var el = levelcont.querySelectorAll(this.getAttribute("href"))[0];
                                         if (el) {
                                                 el.parentElement.scrollTop = el.offsetTop - rem(1);
