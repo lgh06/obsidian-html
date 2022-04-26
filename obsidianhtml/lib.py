@@ -95,21 +95,21 @@ def ConvertTitleToMarkdownId(title):
     idstr = "".join([ch for ch in idstr if ch in (ascii_letters + digits + ' -_')])
     return idstr
 
-@lru_cache
+@lru_cache(maxsize=None)
 def OpenIncludedFile(resource):
     path = importlib.util.find_spec("obsidianhtml.src").submodule_search_locations[0]
     path = os.path.join(path, resource)
     with open(path, 'r', encoding="utf-8") as f:
         return f.read()
 
-@lru_cache
+@lru_cache(maxsize=None)
 def OpenIncludedFileBinary(resource):
     path = importlib.util.find_spec("obsidianhtml.src").submodule_search_locations[0]
     path = os.path.join(path, resource)
     with open(path, 'rb') as f:
         return f.read()    
 
-@lru_cache
+@lru_cache(maxsize=None)
 def CreateStaticFilesFolders(html_output_folder):
     obsfolder = html_output_folder.joinpath('obs.html')
     os.makedirs(obsfolder, exist_ok=True)
