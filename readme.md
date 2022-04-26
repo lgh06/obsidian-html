@@ -1,4 +1,8 @@
 # It's a fork version, works on python 3.7, for cloudflare pages.  
+```
+python3 -m pip install --upgrade pip && python3 -m pip install https://github.com/lgh06/obsidian-html/archive/refs/heads/master.zip && obsidianhtml -i config_cf.yaml
+```
+see https://github.com/lgh06/Daniel_kb
 
 
 # Obsidian-html [![TestSuite](https://github.com/obsidian-html/obsidian-html/actions/workflows/test.yml/badge.svg)](https://github.com/obsidian-html/obsidian-html/actions/workflows/test.yml)
