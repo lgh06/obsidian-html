@@ -5,7 +5,7 @@ from pathlib import Path
 
 import inspect
 import yaml
-from functools import cache
+from functools import lru_cache
 
 class Config:
     config = None
@@ -59,7 +59,7 @@ class Config:
     def disable_feature(self, feature_key_name):
         self.config['toggles']['features'][feature_key_name]['enabled'] = False
 
-    @cache
+    @lru_cache(maxsize=None)
     def _feature_is_enabled_cached(self, feature_key_name):
         return self.config['toggles']['features'][feature_key_name]['enabled']
 
@@ -69,7 +69,7 @@ class Config:
         else:
             return self.config['toggles']['features'][feature_key_name]['enabled']
 
-    @cache
+    @lru_cache(maxsize=None)
     def _get_config_cached(self, path:str):
         return self.get_config(path)
 
@@ -103,7 +103,7 @@ class Config:
         ptr[keys[-1]] = value  
         return self.get_config(path)
 
-    @cache
+    @lru_cache(maxsize=None)
     def GetCachedConfig(self, descriptor):
         if descriptor == 'rss_show_icon':
             return (self.pb.gc('toggles/features/rss/enabled') and self.pb.gc('toggles/features/rss/styling/show_icon'))
