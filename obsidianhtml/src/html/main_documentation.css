@@ -155,7 +155,7 @@ h4 + table {
     /* height: 100vh; */
     width: 100%;
     /* overflow: hidden; */
-    scroll-margin-top: 20rem;
+    /* scroll-margin-top: 20rem; */
 }
 /* rename this class to .main-container or <main> in future. it is confused.*/
 .flex_row {
@@ -254,7 +254,12 @@ h4 + table {
 
 
 h1, h2, h3, h4, h5 {
-    scroll-margin-top: 8rem;
+    scroll-margin-top: 2rem;
+}
+@media all and (max-width: 900px) {
+    h1, h2, h3, h4, h5 {
+        scroll-margin-top: 10rem;
+    }
 }
 
 .icon-tray {
@@ -286,12 +291,12 @@ h1, h2, h3, h4, h5 {
     margin-top:2rem;
     margin-bottom:2rem;
     background-color: white;
-    scroll-margin-top: 20rem;
+    /* scroll-margin-top: 20rem; */
     overflow-anchor: none;
 }
-h1, h2, h3, h4, h5 {
+/* h1, h2, h3, h4, h5 {
     scroll-margin-top: 4rem;
-}
+} */
 h1 {
     font-size: 28px;
     line-height: 34px;
