@@ -144,6 +144,9 @@ h4 + table {
     padding-left:0rem;
     min-width: max-content;
     max-width: max-content;
+    background-color: rgba(245, 247, 255, 0.4);
+    position: sticky;
+    top: 0;
 }
 /* rename this class to .container in future. it is confused.*/
 .flex_col {
