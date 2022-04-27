@@ -209,8 +209,12 @@ function load_dirtree_as_left_pane(xmlHttp, level, theUrl, callbackpath){
 
         let html = ''
         let header = links[0]['url'].split('/')[0]
+        // console.log('header', links)
         if (header == 'index.html'){
                 header = 'Contents'
+        }
+        if(header === ''){
+                header = 'Siblings'
         }
         html += '<span class="toc-header">'+header+'</span><ul>'
         for (let i=0; i < links.length; i++){

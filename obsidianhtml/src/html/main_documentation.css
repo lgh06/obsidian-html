@@ -6,10 +6,10 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: rgb(51, 51, 51);
     margin: 0rem;
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw; */
+    /* height: 100vh; */
     position: static;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
   
@@ -62,14 +62,16 @@ h4 + table {
 
 
 .container {
+/* rename this class to .center-pane / .mid-panel in future. it is confused. */
     flex-grow: 1;
     flex: auto;
     padding: 2rem;
-    height: calc(100vh - 5rem);
-    overflow-y: scroll;
+    /* height: calc(100vh - 5rem); */
+    /* overflow-y: scroll; */
     scrollbar-color: __accent_color__12 #ffffff;
     scroll-margin-top: 2rem;
     max-width: __max_note_width__;
+    word-wrap:break-word;
 }
 .container img {
     max-width: 100%;
@@ -143,19 +145,21 @@ h4 + table {
     min-width: max-content;
     max-width: max-content;
 }
+/* rename this class to .container in future. it is confused.*/
 .flex_col {
     display: flex;
     flex-direction:column;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
+    /* height: 100vh; */
+    width: 100%;
+    /* overflow: hidden; */
     scroll-margin-top: 20rem;
 }
+/* rename this class to .main-container or <main> in future. it is confused.*/
 .flex_row {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    width: 100vw;
+    width: 100%;
 }
 
 .single_tab_page {
@@ -449,7 +453,7 @@ span.tag {
 
 .dir-container {
     padding-left:1rem;
-    display: none;
+    display: block;
     padding-left: 1.5rem;
 }
 .dir-button {
@@ -470,29 +474,51 @@ span.tag {
     list-style-type: none;
 }
 
-@media (max-width: 1300px) {
+/* @media (max-width: 1300px) {
+    #left_pane {
+        width: 100%;
+        overflow-y: auto;
+        height: auto;
+    }
+    .flex_row{
+        flex-direction: column-reverse;
+    }
+} */
+
+@media (max-width: 900px) {
+
+    ::-webkit-scrollbar {
+        width: .1rem;
+        height: .1rem;
+    }
+
+    #right_pane, #left_pane {
+        width: 100%;
+        overflow-y: auto;
+        height: auto;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+    .flex_row{
+        flex-direction: column-reverse;
+    }
+
+    /* #right_pane,
     #left_pane {
         flex: 0;
         display: none;
-    }
-}
-
-@media (max-width: 840px) {
-
-    #right_pane,
-    #left_pane {
-        flex: 0;
-        display: none;
-    }
+    } */
 
     .container {
-        float: none;
-        width: calc(100vw - 4rem);
+        width: 90%;
+        margin: 0 auto;
     }
-    .container:after {
+    /* .container:after {
         content: "\a\a\a\a\a";
         white-space: pre;
-    }
+    } */
     .container-clickback {
         display: none;
     }
@@ -505,10 +531,10 @@ span.tag {
 
     .navbar {
         display: flex;
-    }    
+    }
 }
 
-@media (max-width: 602px) {
+@media (max-width: 900px) {
     #header_flex {
         flex-direction: column;
         margin-top: -1rem;

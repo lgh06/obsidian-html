@@ -1,12 +1,12 @@
-function toggle_dir(dir_button_id){
-    console.log(dir_button_id);
-    id = dir_button_id.split('-')[1]
-    cont = document.getElementById('folder-container-'+id)
+function toggle_dir(dir_button_id) {
+  console.log(dir_button_id);
+  let id = dir_button_id.split('-')[1]
+  let folderContainerElement = document.querySelector('#folder-container-' + id)
 
-    if (cont.style.display == "block") {
-            cont.style.display = "none";
-    }
-    else {
-            cont.style.display = "block";
-    }
+  if ( ['block', ''].includes( folderContainerElement.style.display ) ) {
+    folderContainerElement.style.display = "none";
+  }
+  else {
+    folderContainerElement.style.display = "block";
+  }
 }
