@@ -20,6 +20,7 @@ function LoadPage() {
         let collection = document.getElementsByClassName("toc");
         if (collection.length > 0){
                 let toc = collection[0];
+                // there will be toc right panel only when headings are more than 1. ( >=2 )
                 if (toc.getElementsByTagName('li').length > 1){
 
                         if (toc_pane && no_tab_mode){
@@ -214,7 +215,7 @@ function load_dirtree_as_left_pane(xmlHttp, level, theUrl, callbackpath){
                 header = 'Contents'
         }
         if(header === ''){
-                header = 'Siblings'
+                header = '同级页面：'
         }
         html += '<span class="toc-header">'+header+'</span><ul>'
         for (let i=0; i < links.length; i++){
