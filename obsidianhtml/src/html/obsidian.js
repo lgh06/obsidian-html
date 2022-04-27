@@ -215,7 +215,7 @@ function load_dirtree_as_left_pane(xmlHttp, level, theUrl, callbackpath){
                 header = 'Contents'
         }
         if(header === ''){
-                header = '同级页面：'
+                header = 'Sibling Pages:'
         }
         html += '<span class="toc-header">'+header+'</span><ul>'
         for (let i=0; i < links.length; i++){
