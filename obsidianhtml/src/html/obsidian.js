@@ -357,39 +357,39 @@ function FindNoteMaxLevelRecurse(level) {
 //         }
 // }
 
-// function SetContainer(container) {
-//         // This function is called on every (newly created) container. 
-//         // One container holds one tab
+function SetContainer(container) {
+        // This function is called on every (newly created) container. 
+        // One container holds one tab
 
-//         // Set url
-//         // This will be set already if this is not the first tab
-//         if (typeof container.url === 'undefined') {
-//                 container.url = window.location.pathname;
-//         }
+        // Set url
+        // This will be set already if this is not the first tab
+        if (typeof container.url === 'undefined') {
+                container.url = window.location.pathname;
+        }
 
-//         // Set click to get header link
-//         SetHeaders(container);
+        // Set click to get header link
+        // SetHeaders(container);
 
-//         // Load mermaid code
-//         mermaid.init()
+        // Load mermaid code
+        mermaid.init()
 
-//         // set graph svg and button to have unique id across tabs
-//         svgs = container.querySelectorAll(".graph_svg");
-//         if (svgs.length == 1) {
-//                 svgs[0].id = svgs[0].id.replace('{level}', container.level)
-//         }
+        // set graph svg and button to have unique id across tabs
+        svgs = container.querySelectorAll(".graph_svg");
+        if (svgs.length == 1) {
+                svgs[0].id = svgs[0].id.replace('{level}', container.level)
+        }
 
-//         divs = container.querySelectorAll(".graph_div");
-//         if (divs.length == 1) {
-//                 divs[0].id = divs[0].id.replace('{level}', container.level)
-//         }        
+        divs = container.querySelectorAll(".graph_div");
+        if (divs.length == 1) {
+                divs[0].id = divs[0].id.replace('{level}', container.level)
+        }        
 
-//         let buttons = container.querySelectorAll(".graph_button");
-//         if (buttons.length == 1) {
-//                 buttons[0].level = container.level;
-//                 buttons[0].id = buttons[0].id.replace('{level}', container.level)
-//         }
-// }
+        let buttons = container.querySelectorAll(".graph_button");
+        if (buttons.length == 1) {
+                buttons[0].level = container.level;
+                buttons[0].id = buttons[0].id.replace('{level}', container.level)
+        }
+}
 
 // function SetHeaders(container) {
 //         let els = container.childNodes;
