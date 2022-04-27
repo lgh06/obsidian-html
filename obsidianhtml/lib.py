@@ -133,7 +133,7 @@ def ExportStaticFiles(pb):
         [f'html/{pb.gc("_css_file")}', 'main.css'], 
         ['html/obsidian.js', 'obsidian.js'],
         ['html/mermaid.css', 'mermaid.css'],
-        ['html/mermaid.min.js', 'mermaid.min.js'],
+        # ['html/mermaid.min.js', 'mermaid.min.js'],
         ['html/taglist.css', 'taglist.css'],
         ['html/external.svg', 'external.svg'],
         ['html/hashtag.svg', 'hashtag.svg'],
