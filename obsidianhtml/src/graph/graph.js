@@ -87,7 +87,7 @@ function graph_open_link_normal(args){
     console.log('graph.js graph_open_link_normal args',args)
     let url = args.node.url;
     if(args.graph_container_str === 'Agraph_full_page'){
-        url = '../' + url
+        url = '../../' + url
     }
     return function(){
         console.log('graph_open_link_normal url:', url)
