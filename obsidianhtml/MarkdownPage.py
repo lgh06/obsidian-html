@@ -163,6 +163,10 @@ class MarkdownPage:
             safe_link = re.escape('![['+link+']]')
             self.page = re.sub(safe_link, new_link, self.page)
 
+        # LGHTODO
+        # add <a href=""></a> link for unrecognized file name extensions, like .7z / .zip 
+        #
+
         # -- [4] Handle local image/video/audio links (copy them over to output)
         for link in re.findall("(?<=\!\[\]\()(.*)(?=\))", self.page):
             clean_link_name = urllib.parse.unquote(link).split('/')[-1].split('|')[0]
@@ -312,6 +316,7 @@ class MarkdownPage:
             file_name, file_object, header = GetObsidianFilePath(link, self.file_tree)
 
             if file_object == False:
+                ## LGHTODO add links for un-recognized file extensions
                 self.page = self.page.replace(l, f"> **obsidian-html error:** Could not find page {link}.")
                 continue
             
