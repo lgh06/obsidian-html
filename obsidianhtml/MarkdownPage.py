@@ -194,6 +194,8 @@ class MarkdownPage:
                 new_link = self.GetVideoHTML(file_name, relative_path, suffix)
             if lo.metadata['is_audio']:
                 new_link = self.GetAudioHTML(file_name, relative_path, suffix)
+            if suffix in ['7z', 'zip', 'html']:
+                new_link = re.sub(re.escape('![]'), '[' + file_name  + ']', new_link)
             
             safe_link = re.escape('![]('+link+')')
             self.page = re.sub(safe_link, new_link, self.page)
