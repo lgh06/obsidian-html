@@ -10,14 +10,14 @@ var html_url_prefix = "{html_url_prefix}";
 var documentation_mode = {documentation_mode};
 var tab_mode = ! no_tab_mode;
 
-function LoadPage() {
-  function ready(fn) {
-    if (document.readyState != 'loading') {
-      fn();
-    } else {
-      document.addEventListener('DOMContentLoaded', fn);
-    }
+function ready(fn) {
+  if (document.readyState != 'loading') {
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
   }
+}
+function LoadPage() {
   ready(LoadPageFn);
 }
 
@@ -45,7 +45,7 @@ function LoadPageFn() {
                         }
                 }
         }
-        
+
         // if (tab_mode){
         //         SetLinks(0);
         // }
@@ -103,6 +103,7 @@ function LoadPageFn() {
         FirstContainer.id = 'level-0';
         FirstContainer.level = '0';
         SetContainer(FirstContainer);
+        // setContainerScrollMarginTop();
 
         // Open the path on loading the page
         // This is everything after ?path=
@@ -592,3 +593,57 @@ function toggle(id, display_value){
                 el.style.display = display_value;
         }
 }
+
+function setContainerScrollMarginTop(){
+  let width = document.documentElement.clientWidth;
+  let rightPane = document.querySelector('#right_pane');
+  let rightPaneText = '';
+  if(rightPane){
+    rightPaneText = rightPane.innerText;
+  }
+  console.log('rightPane', rightPane, rightPaneText, width)
+
+  if(width <= 900 && rightPaneText.includes('Table of contents')){
+    ['h1', 'h2', 'h3', 'h4'].forEach(v =>{
+      let arr = document.querySelectorAll(v);
+      console.log(v,arr)
+      arr.forEach(vv =>{
+        vv.style['scroll-margin-top'] = rightPane.offsetHeight + 'px';
+      })
+    })
+  }
+}
+
+function setNavBarButtonToggle(){
+  let isVisible = function( ele ) {
+    return !!( ele.offsetWidth || ele.offsetHeight || ele.getClientRects().length );
+  };
+  let setStyle = (ele, styleProp, styleValue) =>{
+    if(ele){
+      ele.style[styleProp] = styleValue;
+    }else{
+
+    }
+  }
+  let navBar = document.querySelector('#navbar');
+  let navButton = document.querySelector('.navbar-button');
+  let rightPane = document.querySelector('#right_pane');
+
+  if(navButton){
+    navButton.addEventListener('click', () =>{
+      if(isVisible(navBar)){
+        setStyle(navBar, 'display', 'none');
+        setStyle(rightPane, 'display', 'none');
+      }else{
+        setStyle(navBar, 'display', 'flex');
+        setStyle(rightPane, 'display', 'block');
+        setContainerScrollMarginTop();
+      }
+    });
+  }
+
+}
+
+ready(()=>{
+  setNavBarButtonToggle();
+})

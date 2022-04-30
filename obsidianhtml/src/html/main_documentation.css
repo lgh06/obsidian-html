@@ -144,7 +144,6 @@ h4 + table {
     padding-left:0rem;
     min-width: max-content;
     max-width: max-content;
-    background-color: rgba(245, 247, 255, 0.4);
     position: sticky;
     top: 0;
 }
@@ -509,6 +508,13 @@ span.tag {
         padding-left: .5rem;
         padding-right: .5rem;
     }
+    #right_pane{
+        backdrop-filter: blur(1px);
+        background-color: rgba(245, 247, 255, 0.4);
+        display: none;
+        max-height: 22vh;
+        overflow-y: auto;
+    }
     .flex_row{
         flex-direction: column-reverse;
     }
@@ -521,7 +527,10 @@ span.tag {
 
     .container {
         width: 90%;
+        max-width: 90%;
         margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
     }
     /* .container:after {
         content: "\a\a\a\a\a";
