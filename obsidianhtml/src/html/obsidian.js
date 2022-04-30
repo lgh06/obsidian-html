@@ -11,6 +11,17 @@ var documentation_mode = {documentation_mode};
 var tab_mode = ! no_tab_mode;
 
 function LoadPage() {
+  function ready(fn) {
+    if (document.readyState != 'loading') {
+      fn();
+    } else {
+      document.addEventListener('DOMContentLoaded', fn);
+    }
+  }
+  ready(LoadPageFn);
+}
+
+function LoadPageFn() {
         console.log('threshold', (1.2 * 40 * getComputedStyle(document.documentElement).fontSize.split("px")[0]));
 
         if (documentation_mode){
